@@ -22,10 +22,10 @@ User::flagged('myFlag')->get(); // returns all models with the given flag
 User::notFlagged('myFlag')->get(); // returns all models without the given flag
 ```
 
-Though there are other usages, the primary use case is to easily build idempotent (aka restartable) pieces of code. Image you should write an artisan command that sends a mail to each user. Using flags, you can make sure that if the command is cancelled half-way, that in the second invocation, you'll only send mails to users that haven't received one yet. 
+Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. Image you should write an Artisan command that sends a mail to each user. Using flags, you can make sure that if the command is cancelled half-way, that in the second invocation, you'll only send mails to users that haven't received one yet. 
 
 ```php
-// in an artisan command
+// in an Artisan command
 
 User::notFlagged('hasReceivedExtraMail')
     ->each(function(User $user) {
@@ -35,6 +35,8 @@ User::notFlagged('hasReceivedExtraMail')
     });
 });
 ```
+
+No matter how many times you would execute this command, users would only get the mail once.
 
 ## Support us
 
