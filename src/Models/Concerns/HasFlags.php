@@ -57,3 +57,4 @@ trait HasFlags
             ->toArray();
     }
 }
+
