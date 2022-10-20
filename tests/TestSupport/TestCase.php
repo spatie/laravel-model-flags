@@ -34,7 +34,7 @@ class TestCase extends Orchestra
 
         $migration->up();
 
-        Schema::create('test_models', function(Blueprint $table) {
+        Schema::create('test_models', function (Blueprint $table) {
             $table->id();
 
             $table->timestamps();
