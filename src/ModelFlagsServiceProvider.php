@@ -12,7 +12,6 @@ class ModelFlagsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-model-flags')
             ->hasConfigFile()
-            ->hasMigration('create_flags_table')
-            ->hasCommand(ModelFlagsCommand::class);
+            ->hasMigration('create_flags_table');
     }
 }
