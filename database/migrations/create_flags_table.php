@@ -8,10 +8,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_model_flags_table', function (Blueprint $table) {
+        Schema::create('flags', function (Blueprint $table) {
             $table->id();
 
-            // add fields
+            $table->string('name');
+            $table->morphs('flaggable');
+
+            $table->index('name');
 
             $table->timestamps();
         });
