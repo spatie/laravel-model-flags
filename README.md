@@ -29,7 +29,7 @@ Though there are other usages, the primary use case of this package is to easily
 
 User::notFlagged('hasReceivedExtraMail')
     ->each(function(User $user) {
-        // send mail to user
+        Mail::to($user->email)->send(new SomeMailable())
         
         $user->flag('hasReceivedExtraMail');
     });
