@@ -30,7 +30,7 @@ trait HasFlags
             ->whereHasMorph(
                 'flags',
                 $this->getMorphClass(),
-                fn(Builder $query) => $query->where('name', $name)
+                fn (Builder $query) => $query->where('name', $name)
             );
     }
 
