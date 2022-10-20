@@ -8,7 +8,7 @@
 This package offers a trait that allows you to add flags to an Eloquent model. 
 
 ```php
-$user->hasFlag('myFlag'); // return false;
+$user->hasFlag('myFlag'); // returns false;
 
 $user->flag('myFlag');
 
