@@ -27,11 +27,11 @@ Though there are other usages, the primary use case of this package is to easily
 ```php
 // in an Artisan command
 
-User::notFlagged('hasReceivedExtraMail')
+User::notFlagged('wasSentPromotionMail')
     ->each(function(User $user) {
-        Mail::to($user->email)->send(new SomeMailable())
-        
-        $user->flag('hasReceivedExtraMail');
+        Mail::to($user->email)->send(new PromotionMail())
+       
+        $user->flag('wasSentPromotionMail');
     });
 });
 ```
