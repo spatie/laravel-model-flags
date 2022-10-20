@@ -107,6 +107,15 @@ YourModel::flagged('myFlag'); // query all models that have a flag with the give
 YourModel::notFlagged('myFlag'); // query all models that have do not have a flag with the given name
 ```
 
+To remove a flag from all models in one go, you can delete the flag using the `Spatie\ModelFlags\Models\Flag` model.
+
+```php
+use Spatie\ModelFlags\Models\Flag;
+
+// remove myFlag from all models
+Flag::where('name', 'myFlag')->delete();
+```
+
 ## Testing
 
 ```bash
