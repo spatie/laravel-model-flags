@@ -18,6 +18,19 @@ it('can add a flag to a model', function () {
     expect($this->otherModel->hasFlag('flag-a'))->toBeFalse();
 });
 
+it('can unflag a model', function() {
+    $this->model->unflag('flag-a');
+
+    $this->model->flag('flag-a');
+    $this->model->flag('flag-b');
+    expect($this->model->hasFlag('flag-a'))->toBeTrue();
+
+    $this->model->unflag('flag-a');
+
+    expect($this->model->hasFlag('flag-a'))->toBeFalse();
+    expect($this->model->hasFlag('flag-b'))->toBeTrue();
+});
+
 it('can get the flags from a model', function () {
     $this->model
         ->flag('flag-a')

@@ -99,6 +99,8 @@ These functions will become available.
 ```php 
 $model->flag('myFlag'); // add a flag
 $model->hasFlag('myFlag'); // returns true if the model has a flag with the given name
+$model->unflag('myFlag'); // remove a flag
+
 $model->flagNames(); // returns an array with the name of all flags on the model
 
 YourModel::flagged('myFlag'); // query all models that have a flag with the given name

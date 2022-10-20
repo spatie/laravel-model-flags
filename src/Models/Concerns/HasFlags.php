@@ -29,6 +29,13 @@ trait HasFlags
         return $this;
     }
 
+    public function unflag(string $name): self
+    {
+        $this->flags()->where('name', $name)->delete();
+
+        return $this;
+    }
+
     public function scopeFlagged(Builder $query, string $name): void
     {
         $query
