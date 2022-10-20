@@ -44,7 +44,7 @@ trait HasFlags
     public function flagNames(): array
     {
         return $this->flags
-            ->map(fn(Flag $flag) => $flag->name)
+            ->map(fn (Flag $flag) => $flag->name)
             ->toArray();
     }
 }
