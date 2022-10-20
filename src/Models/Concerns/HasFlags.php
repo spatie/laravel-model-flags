@@ -19,7 +19,7 @@ trait HasFlags
 
     public function flag($name): self
     {
-        $this->flags()->firstOrCreate(['name', $name]);
+        $this->flags()->firstOrCreate(['name' => $name]);
 
         return $this;
     }

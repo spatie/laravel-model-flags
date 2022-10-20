@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Flag extends Model
 {
+    public $guarded = [];
+
     public function flaggable(): MorphTo
     {
         return $this->morphTo();
