@@ -30,10 +30,23 @@ it('can get the flags from a model', function () {
     expect($flags[1]->name)->toBe('flag-b');
 });
 
-it('can get the flag names from a model', function() {
+it('can get the flag names from a model', function () {
     $this->model
         ->flag('flag-a')
         ->flag('flag-b');
 
     expect($this->model->flagNames())->toBe(['flag-a', 'flag-b']);
+});
+
+it('has a scope to get models with a certain flag', function () {
+    expect(TestModel::flagged('flag-a')->get())->toHaveCount(0);
+
+    $this->model->flag('flag-a');
+    expect(TestModel::flagged('flag-a')->get())->toHaveCount(1);
+
+    $this->otherModel->flag('flag-b');
+    expect(TestModel::flagged('flag-a')->get())->toHaveCount(1);
+
+    $this->otherModel->flag('flag-a');
+    expect(TestModel::flagged('flag-a')->get())->toHaveCount(2);
 });

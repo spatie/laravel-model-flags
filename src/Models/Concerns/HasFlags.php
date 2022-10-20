@@ -27,9 +27,8 @@ trait HasFlags
     public function scopeFlagged(Builder $query, string $name): void
     {
         $query
-            ->whereHasMorph(
+            ->whereHas(
                 'flags',
-                $this->getMorphClass(),
                 fn (Builder $query) => $query->where('name', $name)
             );
     }
