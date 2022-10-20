@@ -9,6 +9,11 @@ use Spatie\ModelFlags\Models\Flag;
 /** @mixin \Illuminate\Database\Eloquent\Model */
 trait HasFlags
 {
+    public function flags(): MorphMany
+    {
+        return $this->morphMany(config('model-flags.flag_model'), 'flaggable');
+    }
+
     public function hasFlag(string $name): bool
     {
         return $this
@@ -40,11 +45,6 @@ trait HasFlags
                 'flags',
                 callback: fn (Builder $query) => $query->where('name', $name)
             );
-    }
-
-    public function flags(): MorphMany
-    {
-        return $this->morphMany(Flag::class, 'flaggable');
     }
 
     /**

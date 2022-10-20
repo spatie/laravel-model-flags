@@ -48,44 +48,66 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require spatie/laravel-model-flags
 ```
 
-You can publish and run the migrations with:
+Behind the scenes, the flags and the relation to a model will be stored in the `flags` table. 
+
+To create that `flags` table, you must publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-model-flags-migrations"
+php artisan vendor:publish --tag="model-flags-migrations"
 php artisan migrate
 ```
 
-You can publish the config file with:
+Optionally, you can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-model-flags-config"
+php artisan vendor:publish --tag="model-flags-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
 return [
+    /*
+     * The model used as the flag model.
+     */
+    'flag_model' => Spatie\ModelFlags\Models\Flag::class,
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-model-flags-views"
 ```
 
 ## Usage
 
+To add flaggable behaviour to a model, simply let it use the `Spatie\ModelFlags\Models\Concerns\HasFlags` trait
+
 ```php
-$modelFlags = new Spatie\ModelFlags();
-echo $modelFlags->echoPhrase('Hello, Spatie!');
+use Illuminate\Database\Eloquent\Model;
+use Spatie\ModelFlags\Models\Concerns\HasFlags;
+
+class YourModel extends Model
+{
+    use HasFlags;
+}
 ```
+
+These functions will become available.
+
+```php 
+$model->flag('myFlag'); // add a flag
+
+$model->hasFlag('myFlag'); // returns true if the model has a flag with the given name
+
+$model->flagNames(); // returns an array with the name of all flags on the model
+
+YourModel::flagged('myFlag'); // query all models that have a flag with the given name
+
+YourModel::notFlagged('myFlag'); // query all models that have do not have a flag with the given name
+```
+
 
 ## Testing
 
