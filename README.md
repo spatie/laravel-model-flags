@@ -5,7 +5,36 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-model-flags/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/spatie/laravel-model-flags/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-model-flags.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-model-flags)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package offers a trait that allows you to add flags to an Eloquent model. 
+
+```php
+$user->hasFlag('myFlag'); // return false;
+
+$user->flag('myFlag');
+
+$user->flag('flag-b'); // returns true;
+```
+
+It also provides scopes to quickly get all models with a certain flag.
+
+```php
+User::flagged('myFlag')->get(); // returns all models with the given flag
+User::notFlagged('myFlag')->get(); // returns all models without the given flag
+```
+
+Though there are other usages, the primary use case is to easily build idempotent (aka restartable) pieces of code. Image you should write an artisan command that sends a mail to each user. Using flags, you can make sure that if the command is cancelled half-way, that in the second invocation, you'll only send mails to users that haven't received one yet. 
+
+```php
+// in an artisan command
+
+User::notFlagged('hasReceivedExtraMail')
+    ->each(function(User $user) {
+        // send mail to user
+        
+        $user->flag('hasReceivedExtraMail');
+    });
+});
+```
 
 ## Support us
 

@@ -33,6 +33,15 @@ trait HasFlags
             );
     }
 
+    public function scopeNotFlagged(Builder $query, string $name): void
+    {
+        $query
+            ->doesntHave(
+                'flags',
+                callback: fn (Builder $query) => $query->where('name', $name)
+            );
+    }
+
     public function flags(): MorphMany
     {
         return $this->morphMany(Flag::class, 'flaggable');
