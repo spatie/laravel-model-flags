@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Spatie\ModelFlags\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ModelFlagsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-model-flags';
 
     public $description = 'My command';
 
