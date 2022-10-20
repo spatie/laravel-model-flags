@@ -10,7 +10,7 @@ This package offers a trait that allows you to add flags to an Eloquent model.
 ```php
 $user->hasFlag('myFlag'); // returns false;
 
-$user->flag('myFlag');
+$user->flag('myFlag') // add a flag with the given name;
 
 $user->flag('flag-b'); // returns true;
 ```
@@ -98,16 +98,12 @@ These functions will become available.
 
 ```php 
 $model->flag('myFlag'); // add a flag
-
 $model->hasFlag('myFlag'); // returns true if the model has a flag with the given name
-
 $model->flagNames(); // returns an array with the name of all flags on the model
 
 YourModel::flagged('myFlag'); // query all models that have a flag with the given name
-
 YourModel::notFlagged('myFlag'); // query all models that have do not have a flag with the given name
 ```
-
 
 ## Testing
 
