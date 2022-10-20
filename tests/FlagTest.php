@@ -9,7 +9,7 @@ beforeEach(function () {
     $this->otherModel = TestModel::create();
 });
 
-it('has a relation back to the flaggable', function() {
+it('has a relation back to the flaggable', function () {
     $this->model->flag('flag-a');
 
     $flag = Flag::first();

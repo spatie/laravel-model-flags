@@ -1,6 +1,5 @@
 <?php
 
-use Spatie\ModelFlags\Models\Flag;
 use Spatie\ModelFlags\Tests\TestSupport\TestClasses\TestModel;
 
 beforeEach(function () {
@@ -64,4 +63,3 @@ it('has a scope to get models without a certain flag', function () {
     $this->otherModel->flag('flag-a');
     expect(TestModel::notFlagged('flag-a')->get())->toHaveCount(0);
 });
-
