@@ -38,4 +38,14 @@ trait HasFlags
     {
         return $this->morphMany(Flag::class, 'flaggable');
     }
+
+    /**
+     * @return array<int, string>
+     */
+    public function flagNames(): array
+    {
+        return $this->flags
+            ->map(fn(Flag $flag) => $flag->name)
+            ->toArray();
+    }
 }

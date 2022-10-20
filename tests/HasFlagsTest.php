@@ -29,3 +29,11 @@ it('can get the flags from a model', function() {
     expect($flags[0]->name)->toBe('flag-a');
     expect($flags[1]->name)->toBe('flag-b');
 });
+
+it('can get the flag names from a model', function() {
+    $this->model
+        ->flag('flag-a')
+        ->flag('flag-b');
+
+    expect($this->model->flagNames())->toBe(['flag-a', 'flag-b']);
+});
