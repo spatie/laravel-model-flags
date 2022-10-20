@@ -2,8 +2,8 @@
 
 use Spatie\ModelFlags\Tests\TestSupport\TestClasses\TestModel;
 
-beforeEach(function() {
-   $this->model = TestModel::create();
+beforeEach(function () {
+    $this->model = TestModel::create();
 
     $this->otherModel = TestModel::create();
 });
@@ -18,7 +18,7 @@ it('can add a flag to a model', function () {
     expect($this->otherModel->hasFlag('flag-a'))->toBeFalse();
 });
 
-it('can get the flags from a model', function() {
+it('can get the flags from a model', function () {
     $this->model
         ->flag('flag-a')
         ->flag('flag-b');
