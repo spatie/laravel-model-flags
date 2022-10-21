@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->morphs('flaggable');
 
-            $table->index('name');
+            $table->index(['name', 'flaggable_id', 'flaggable_type']);
 
             $table->timestamps();
         });
