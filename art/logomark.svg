@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <title>logomark of spatie/laravel-model-flags</title><desc>by Caneco</desc>
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="20.0313" y1="-30.156" x2="100" y2="-30.156" gradientTransform="matrix(1 0 0 -1 0 0)">
+        <stop offset="0" stop-color="#5e9eb3"/>
+        <stop offset="1" stop-color="#a3c8d4"/>
+    </linearGradient>
+    <path fill="url(#a)" d="M100,58.7H20v-57L100,58.7z"/>
+    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="5" y1="100" x2="5" y2="0">
+        <stop offset="0" stop-color="#0b3542"/>
+        <stop offset="1" stop-color="#0f4658"/>
+    </linearGradient>
+    <rect y="0" fill="url(#b)" width="10" height="100"/>
+    <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="20.0313" y1="28.5" x2="100" y2="28.5">
+        <stop offset="0" stop-color="#197593"/>
+        <stop offset="1" stop-color="#5e9eb3"/>
+    </linearGradient>
+    <path fill="url(#c)" d="M20,57V0h80L20,57z"/>
+</svg>
