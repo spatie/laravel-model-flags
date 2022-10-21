@@ -22,13 +22,13 @@ User::flagged('myFlag')->get(); // returns all models with the given flag
 User::notFlagged('myFlag')->get(); // returns all models without the given flag
 ```
 
-Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. For example, when writing an Artisan command that sends a mail to each user. Using flags, you can make sure that when the command is cancelled (or fails) half-way through, in the second invocation, a mail will only be sent to users that haven't received one yet. 
-
-If you need, you can quickly get ride off all flags attached to a model
+If you need, you can quickly get ride off all flags attached to a model:
 
 ```php
 $user->purgeFlags();
 ```
+
+Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. For example, when writing an Artisan command that sends a mail to each user. Using flags, you can make sure that when the command is cancelled (or fails) half-way through, in the second invocation, a mail will only be sent to users that haven't received one yet. 
 
 ```php
 // in an Artisan command
