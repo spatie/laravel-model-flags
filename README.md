@@ -97,14 +97,27 @@ class YourModel extends Model
 These functions will become available.
 
 ```php 
-$model->flag('myFlag'); // add a flag
-$model->hasFlag('myFlag'); // returns true if the model has a flag with the given name
-$model->unflag('myFlag'); // remove a flag
+// add a flag
+$model->flag('myFlag'); 
 
-$model->flagNames(); // returns an array with the name of all flags on the model
+// returns true if the model has a flag with the given name
+$model->hasFlag('myFlag'); 
 
-YourModel::flagged('myFlag'); // query all models that have a flag with the given name
-YourModel::notFlagged('myFlag'); // query all models that have do not have a flag with the given name
+// remove a flag
+$model->unflag('myFlag'); 
+
+ // returns an array with the name of all flags on the model
+$model->flagNames();
+```
+
+You'll also get these scopes:
+
+```php
+// query all models that have a flag with the given name
+YourModel::flagged('myFlag'); 
+
+// query all models that have do not have a flag with the given name
+YourModel::notFlagged('myFlag'); 
 ```
 
 To remove a flag from all models in one go, you can delete the flag using the `Spatie\ModelFlags\Models\Flag` model.
