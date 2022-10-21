@@ -5,24 +5,24 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-model-flags/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/spatie/laravel-model-flags/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-model-flags.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-model-flags)
 
-This package offers a trait that allows you to add flags to an Eloquent model. 
+This package offers a trait that allows you to add flags to an Eloquent model. These can be used to quickly save the state of a process, update, migration, etc... to a model, without having to add an additional column using migrations.
 
 ```php
-$user->hasFlag('myFlag'); // returns false;
+$user->hasFlag('receivedMail'); // returns false
 
-$user->flag('myFlag') // add a flag with the given name;
+$user->flag('receivedMail'); // flag the user as having received the mail
 
-$user->flag('flag-b'); // returns true;
+$user->hasFlag('receivedMail'); // returns true
 ```
 
-It also provides scopes to quickly get all models with a certain flag.
+It also provides scopes to quickly query all models with a certain flag.
 
 ```php
 User::flagged('myFlag')->get(); // returns all models with the given flag
 User::notFlagged('myFlag')->get(); // returns all models without the given flag
 ```
 
-Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. Imagine you should write an Artisan command that sends a mail to each user. Using flags, you can make sure that if the command is cancelled half-way, in the second invocation, you'll only send a mail to users that haven't received one yet. 
+Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. For example, when writing an Artisan command that sends a mail to each user. Using flags, you can make sure that when the command is cancelled (or fails) half-way through, in the second invocation, a mail will only be sent to users that haven't received one yet. 
 
 ```php
 // in an Artisan command
@@ -56,7 +56,7 @@ composer require spatie/laravel-model-flags
 
 Behind the scenes, the flags and the relation to a model will be stored in the `flags` table. 
 
-To create that `flags` table, you must publish and run the migrations with:
+To create that `flags` table, you must publish and run the migrations once with:
 
 ```bash
 php artisan vendor:publish --tag="model-flags-migrations"
@@ -82,7 +82,7 @@ return [
 
 ## Usage
 
-To add flaggable behaviour to a model, simply let it use the `Spatie\ModelFlags\Models\Concerns\HasFlags` trait
+To add flaggable behaviour to a model, simply make it use the `Spatie\ModelFlags\Models\Concerns\HasFlags` trait
 
 ```php
 use Illuminate\Database\Eloquent\Model;
