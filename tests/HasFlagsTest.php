@@ -31,6 +31,20 @@ it('can unflag a model', function () {
     expect($this->model->hasFlag('flag-b'))->toBeTrue();
 });
 
+it('can purge all flags from model', function () {
+
+    $this->model->flag('flag-a');
+    $this->model->flag('flag-b');
+
+    expect($this->model->hasFlag('flag-a'))->toBeTrue();
+    expect($this->model->hasFlag('flag-b'))->toBeTrue();
+
+    $this->model->purgeFlags();
+
+    expect($this->model->hasFlag('flag-a'))->toBeFalse();
+    expect($this->model->hasFlag('flag-b'))->toBeFalse();
+});
+
 it('can get the flags from a model', function () {
     $this->model
         ->flag('flag-a')

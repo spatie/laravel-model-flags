@@ -36,6 +36,13 @@ trait HasFlags
         return $this;
     }
 
+    public function purgeFlags(): self
+    {
+        $this->flags()->delete();
+
+        return $this;
+    }
+
     public function scopeFlagged(Builder $query, string $name): void
     {
         $query
