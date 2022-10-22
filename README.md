@@ -110,6 +110,12 @@ $model->unflag('myFlag');
 
  // returns an array with the name of all flags on the model
 $model->flagNames();
+
+// use the `flags` relation to delete all flags on a model
+$user->flags()->delete();
+
+// use the `flags` relation to delete a particular flag on a model
+$user->flags()->where('name', 'myFlag')->delete();
 ```
 
 You'll also get these scopes:
