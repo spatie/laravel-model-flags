@@ -1,3 +1,5 @@
+<p align="center"><img src="/art/socialcard.png" alt="Social Card of Laravel Permission"></p>
+
 # Add flags to Eloquent models
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-model-flags.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-model-flags)
@@ -28,7 +30,7 @@ If you need, you can quickly get ride off all flags attached to a model:
 $user->purgeFlags();
 ```
 
-Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. For example, when writing an Artisan command that sends a mail to each user. Using flags, you can make sure that when the command is cancelled (or fails) half-way through, in the second invocation, a mail will only be sent to users that haven't received one yet. 
+Though there are other usages, the primary use case of this package is to easily build idempotent (aka restartable) pieces of code. For example, when writing an Artisan command that sends a mail to each user. Using flags, you can make sure that when the command is cancelled (or fails) half-way through, in the second invocation, a mail will only be sent to users that haven't received one yet.
 
 ```php
 // in an Artisan command
@@ -36,7 +38,7 @@ Though there are other usages, the primary use case of this package is to easily
 User::notFlagged('wasSentPromotionMail')
     ->each(function(User $user) {
         Mail::to($user->email)->send(new PromotionMail())
-       
+
         $user->flag('wasSentPromotionMail');
     });
 });
@@ -60,7 +62,7 @@ You can install the package via Composer:
 composer require spatie/laravel-model-flags
 ```
 
-Behind the scenes, the flags and the relation to a model will be stored in the `flags` table. 
+Behind the scenes, the flags and the relation to a model will be stored in the `flags` table.
 
 To create that `flags` table, you must publish and run the migrations once with:
 
@@ -102,15 +104,15 @@ class YourModel extends Model
 
 These functions will become available.
 
-```php 
+```php
 // add a flag
-$model->flag('myFlag'); 
+$model->flag('myFlag');
 
 // returns true if the model has a flag with the given name
-$model->hasFlag('myFlag'); 
+$model->hasFlag('myFlag');
 
 // remove a flag
-$model->unflag('myFlag'); 
+$model->unflag('myFlag');
 
  // returns an array with the name of all flags on the model
 $model->flagNames();
@@ -120,10 +122,10 @@ You'll also get these scopes:
 
 ```php
 // query all models that have a flag with the given name
-YourModel::flagged('myFlag'); 
+YourModel::flagged('myFlag');
 
 // query all models that have do not have a flag with the given name
-YourModel::notFlagged('myFlag'); 
+YourModel::notFlagged('myFlag');
 ```
 
 To remove a flag from all models in one go, you can delete the flag using the `Spatie\ModelFlags\Models\Flag` model.
@@ -157,6 +159,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
+
+And a special thanks to [Caneco](https://twitter.com/caneco) for the logo ✨
 
 ## License
 
