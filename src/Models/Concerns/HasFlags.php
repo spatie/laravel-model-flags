@@ -5,10 +5,18 @@ namespace Spatie\ModelFlags\Models\Concerns;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\ModelFlags\Models\Flag;
+use Illuminate\Database\Eloquent\Model;
 
-/** @mixin \Illuminate\Database\Eloquent\Model */
+/** @mixin Model */
 trait HasFlags
 {
+    public static function bootHasFlags()
+    {
+        static::deleted(function (Model $deletedModel) {
+            $deletedModel->flags()->delete();
+        });
+    }
+
     public function flags(): MorphMany
     {
         return $this->morphMany(config('model-flags.flag_model'), 'flaggable');
