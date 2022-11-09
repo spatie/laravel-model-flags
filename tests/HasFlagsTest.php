@@ -76,3 +76,15 @@ it('has a scope to get models without a certain flag', function () {
     $this->otherModel->flag('flag-a');
     expect(TestModel::notFlagged('flag-a')->get())->toHaveCount(0);
 });
+
+it('can_remove_flags_on_model_delete', function () {
+    $this->model->flag('flag-a');
+
+    $this->model->delete();
+
+    $this->assertEquals(0, $this->model->flags()->get()->count());
+});
+
+it('can_remove_model_without_flags', function () {
+    expect($this->model->delete())->toBeTrue();
+});
