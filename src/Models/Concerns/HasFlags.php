@@ -3,9 +3,9 @@
 namespace Spatie\ModelFlags\Models\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\ModelFlags\Models\Flag;
-use Illuminate\Database\Eloquent\Model;
 
 /** @mixin Model */
 trait HasFlags
