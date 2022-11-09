@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.1.0 - 2022-11-09
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/9
+- Remove flags on model delete by @stfndamjanovic in https://github.com/spatie/laravel-model-flags/pull/10
+
+### New Contributors
+
+- @dependabot made their first contribution in https://github.com/spatie/laravel-model-flags/pull/9
+- @stfndamjanovic made their first contribution in https://github.com/spatie/laravel-model-flags/pull/10
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.0.1...1.1.0
+
 ## 1.0.1 - 2022-10-24
 
 ### What's Changed
