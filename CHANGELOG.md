@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.1.1 - 2023-01-25
+
+### What's Changed
+
+- Bump aglipanci/laravel-pint-action from 1.0.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/15
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2022-11-09
 
 ### What's Changed
