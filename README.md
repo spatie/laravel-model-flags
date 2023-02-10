@@ -118,6 +118,23 @@ $user->flags()->delete();
 $user->flags()->where('name', 'myFlag')->delete();
 ```
 
+A flag can only exist once for a model. When flagging a model with the same flag again, the `updated_at` attribute of the flag will be updated.
+
+```php
+$model->flag('myFlag');
+
+// after a while
+$model->flag('myFlag'); // update_at will be updated
+```
+
+You can get the date of the last time a flag was used on a model.
+
+```php
+$model->lastFlaggedAt(); // returns the update time of the lastly updated flag
+$model->lastFlaggedAt('myFlag') // returns the updated_at of the `myFlag` flag on the model
+$model->lastFlaggedAt('doesNotExist') // returns null if there is no flag with the given name
+```
+
 You'll also get these scopes:
 
 ```php

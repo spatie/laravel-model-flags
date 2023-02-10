@@ -1,6 +1,9 @@
 <?php
 
+use Carbon\Carbon;
+use Spatie\ModelFlags\Models\Flag;
 use Spatie\ModelFlags\Tests\TestSupport\TestClasses\TestModel;
+use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
     $this->model = TestModel::create();
@@ -87,4 +90,34 @@ it('can_remove_flags_on_model_delete', function () {
 
 it('can_remove_model_without_flags', function () {
     expect($this->model->delete())->toBeTrue();
+});
+
+it('can get the latest flag', function() {
+    $this->model->flag('a');
+
+    $this->model->flag('b');
+    $this->model->flag('c');
+
+    $flag = $this->model->latestFlag();
+    expect($flag->name)->toBe('c');
+
+    $flag = $this->model->latestFlag('b');
+    expect($flag->name)->toBe('b');
+
+    expect($this->model->latestFlag('non-existent'))->toBeNull();
+});
+
+it('can get the date of the latest flag', function() {
+    TestTime::freeze();
+
+    expect($this->model->lastFlaggedAt('a'))->toBeNull();
+
+    $this->model->flag('a');
+    expect($this->model->lastFlaggedAt('a'))->toBeInstanceOf(Carbon::class);
+
+    TestTime::addDay();
+    $date = now()->format('Y-m-d');
+    $this->model->flag('a');
+
+    expect($this->model->lastFlaggedAt('a')->format('Y-m-d'))->toBe($date);
 });

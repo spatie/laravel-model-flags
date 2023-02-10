@@ -5,6 +5,7 @@ namespace Spatie\ModelFlags\Models\Concerns;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Carbon;
 use Spatie\ModelFlags\Models\Flag;
 
 /** @mixin Model */
@@ -32,7 +33,7 @@ trait HasFlags
 
     public function flag($name): self
     {
-        $this->flags()->firstOrCreate(['name' => $name]);
+        $this->flags()->firstOrCreate(['name' => $name])->touch();
 
         return $this;
     }
@@ -70,5 +71,19 @@ trait HasFlags
         return $this->flags
             ->map(fn (Flag $flag) => $flag->name)
             ->toArray();
+    }
+
+    public function latestFlag(string $name = null): ?Flag
+    {
+        return $this
+            ->flags()
+            ->when($name, fn(Builder $query) => $query->where('name', $name))
+            ->orderByDesc('updated_at')->orderByDesc('id')
+            ->first();
+    }
+
+    public function lastFlaggedAt(string $name): ?Carbon
+    {
+       return $this->latestFlag($name)?->updated_at;
     }
 }
