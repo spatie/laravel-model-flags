@@ -11,7 +11,7 @@ use Spatie\ModelFlags\Models\Flag;
 /** @mixin Model */
 trait HasFlags
 {
-    public static function bootHasFlags()
+    public static function bootHasFlags(): void
     {
         static::deleted(function (Model $deletedModel) {
             $deletedModel->flags()->delete();
