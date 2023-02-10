@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.1.2 - 2023-02-10
+
+- add `lastFlaggedAt`
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/16
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2023-01-25
 
 ### What's Changed
