@@ -1,7 +1,6 @@
 <?php
 
 use Carbon\Carbon;
-use Spatie\ModelFlags\Models\Flag;
 use Spatie\ModelFlags\Tests\TestSupport\TestClasses\TestModel;
 use Spatie\TestTime\TestTime;
 
@@ -92,7 +91,7 @@ it('can_remove_model_without_flags', function () {
     expect($this->model->delete())->toBeTrue();
 });
 
-it('can get the latest flag', function() {
+it('can get the latest flag', function () {
     $this->model->flag('a');
 
     $this->model->flag('b');
@@ -107,7 +106,7 @@ it('can get the latest flag', function() {
     expect($this->model->latestFlag('non-existent'))->toBeNull();
 });
 
-it('can get the date of the latest flag', function() {
+it('can get the date of the latest flag', function () {
     TestTime::freeze();
 
     expect($this->model->lastFlaggedAt('a'))->toBeNull();

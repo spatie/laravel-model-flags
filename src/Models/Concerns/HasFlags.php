@@ -77,13 +77,13 @@ trait HasFlags
     {
         return $this
             ->flags()
-            ->when($name, fn(Builder $query) => $query->where('name', $name))
+            ->when($name, fn (Builder $query) => $query->where('name', $name))
             ->orderByDesc('updated_at')->orderByDesc('id')
             ->first();
     }
 
     public function lastFlaggedAt(string $name): ?Carbon
     {
-       return $this->latestFlag($name)?->updated_at;
+        return $this->latestFlag($name)?->updated_at;
     }
 }
