@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.2.0 - 2023-02-10
+
+- add `lastFlaggedAt`
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.1.2...1.2.0
+
 ## 1.1.2 - 2023-02-10
 
 - add `lastFlaggedAt`
