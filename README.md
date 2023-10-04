@@ -1,10 +1,8 @@
-<p align="center"><img src="/art/socialcard.png" alt="Social Card of Laravel Permission"></p>
+<p align="center"><img src="/art/socialcard.png" alt="Social Card of Laravel Model Flags"></p>
 
 # Add flags to Eloquent models
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-model-flags.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-model-flags)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-model-flags/run-tests?label=tests)](https://github.com/spatie/laravel-model-flags/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-model-flags/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/spatie/laravel-model-flags/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-model-flags.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-model-flags)
 
 This package offers a trait that allows you to add flags to an Eloquent model. These can be used to quickly save the state of a process, update, migration, etc... to a model, without having to add an additional column using migrations.
