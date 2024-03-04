@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.3.0 - 2024-03-04
+
+### What's Changed
+
+* Laravel 11.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-model-flags/pull/28
+* Fixing the CONTRIBUTING.MD link in README.md by @raksbisht in https://github.com/spatie/laravel-model-flags/pull/18
+
+### New Contributors
+
+* @raksbisht made their first contribution in https://github.com/spatie/laravel-model-flags/pull/18
+* @laravel-shift made their first contribution in https://github.com/spatie/laravel-model-flags/pull/28
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.2.0...1.3.0
+
 ## 1.2.0 - 2023-02-10
 
 - add `lastFlaggedAt`
