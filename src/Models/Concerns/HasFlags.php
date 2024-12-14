@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
-use function Illuminate\Support\enum_value;
 use Spatie\ModelFlags\Models\Flag;
 
 /** @mixin Model */
