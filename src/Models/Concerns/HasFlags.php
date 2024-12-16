@@ -31,7 +31,7 @@ trait HasFlags
             ->exists();
     }
 
-    public function flag($name): self
+    public function flag(string $name): self
     {
         $this->flags()->firstOrCreate(['name' => $name])->touch();
 
