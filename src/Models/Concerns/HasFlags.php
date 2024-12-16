@@ -73,7 +73,7 @@ trait HasFlags
             ->toArray();
     }
 
-    public function latestFlag(string $name = null): ?Flag
+    public function latestFlag(?string $name = null): ?Flag
     {
         return $this
             ->flags()
