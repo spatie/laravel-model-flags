@@ -2,6 +2,25 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.4.0 - 2024-12-23
+
+### What's Changed
+
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/26
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/29
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/30
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/31
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/32
+* add string type to flag function by @ricventu in https://github.com/spatie/laravel-model-flags/pull/33
+* Add enum support for flags by @grantholle in https://github.com/spatie/laravel-model-flags/pull/34
+
+### New Contributors
+
+* @ricventu made their first contribution in https://github.com/spatie/laravel-model-flags/pull/33
+* @grantholle made their first contribution in https://github.com/spatie/laravel-model-flags/pull/34
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2024-03-04
 
 ### What's Changed
