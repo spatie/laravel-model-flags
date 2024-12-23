@@ -10,28 +10,28 @@ beforeEach(function () {
     $this->otherModel = TestModel::create();
 });
 
-it('can add a flag to a model', function () {
-    expect($this->model->hasFlag('flag-a'))->toBeFalse();
+it('can add a flag to a model', function (string|BackedEnum $flag) {
+    expect($this->model->hasFlag($flag))->toBeFalse();
 
-    $this->model->flag('flag-a');
+    $this->model->flag($flag);
 
-    expect($this->model->hasFlag('flag-a'))->toBeTrue();
+    expect($this->model->hasFlag($flag))->toBeTrue();
     expect($this->model->hasFlag('flag-B'))->toBeFalse();
-    expect($this->otherModel->hasFlag('flag-a'))->toBeFalse();
-});
+    expect($this->otherModel->hasFlag($flag))->toBeFalse();
+})->with('flags');
 
-it('can unflag a model', function () {
-    $this->model->unflag('flag-a');
+it('can unflag a model', function (string|BackedEnum $flag) {
+    $this->model->unflag($flag);
 
-    $this->model->flag('flag-a');
+    $this->model->flag($flag);
     $this->model->flag('flag-b');
-    expect($this->model->hasFlag('flag-a'))->toBeTrue();
+    expect($this->model->hasFlag($flag))->toBeTrue();
 
-    $this->model->unflag('flag-a');
+    $this->model->unflag($flag);
 
-    expect($this->model->hasFlag('flag-a'))->toBeFalse();
+    expect($this->model->hasFlag($flag))->toBeFalse();
     expect($this->model->hasFlag('flag-b'))->toBeTrue();
-});
+})->with('flags');
 
 it('can get the flags from a model', function () {
     $this->model
