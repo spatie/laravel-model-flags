@@ -28,6 +28,13 @@ trait HasFlags
         return (string) $value->value;
     }
 
+    protected function ensureValues(Collection|array|string|BackedEnum $names): Collection
+    {
+        return collect($names)
+            ->ensure('string', BackedEnum::class)
+            ->transform(fn($name) => $this->enumValue($name));
+    }
+
     public function flags(): MorphMany
     {
         return $this->morphMany(config('model-flags.flag_model'), 'flaggable');
@@ -55,13 +62,26 @@ trait HasFlags
         return $this;
     }
 
-    public function scopeFlagged(Builder $query, string|BackedEnum $name): void
+    public function scopeFlagged(Builder $query, Collection|array|string|BackedEnum $names): void
     {
         $query
             ->whereHas(
                 'flags',
-                fn (Builder $query) => $query->where('name', $this->enumValue($name))
+                fn (Builder $query) => $query->whereIn('name', $this->ensureValues($names))
             );
+    }
+   
+    public function scopeFlaggedByEvery(Builder $query, Collection|array $names): void
+    {
+        $this->ensureValues($names)
+            ->each(function($name) use ($query){
+                $query
+                    ->whereHas(
+                        'flags', 
+                        fn(Builder $query) => $query->where('name', $name)
+                    );
+            });
+        
     }
 
     public function scopeNotFlagged(Builder $query, string|BackedEnum $name): void
