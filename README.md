@@ -139,6 +139,12 @@ You'll also get these scopes:
 // query all models that have a flag with the given name
 YourModel::flagged('myFlag');
 
+// query all models that have at least one flag in the given list
+YourModel::flagged(['myFlag', 'yourFlag']);
+
+// query all models that have every flags in the given list
+YourModel::flaggedByevery(['myFlag', 'yourFlag']);
+
 // query all models that have do not have a flag with the given name
 YourModel::notFlagged('myFlag');
 ```
