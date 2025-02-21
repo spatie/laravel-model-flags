@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-model-flags` will be documented in this file.
 
+## 1.4.1 - 2025-02-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/37
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/laravel-model-flags/pull/39
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-model-flags/pull/40
+
+**Full Changelog**: https://github.com/spatie/laravel-model-flags/compare/1.4.0...1.4.1
+
 ## 1.4.0 - 2024-12-23
 
 ### What's Changed
