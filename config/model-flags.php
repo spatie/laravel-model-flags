@@ -1,8 +1,10 @@
 <?php
 
+use Spatie\ModelFlags\Models\Flag;
+
 return [
     /*
      * The model used as the flag model.
      */
-    'flag_model' => Spatie\ModelFlags\Models\Flag::class,
+    'flag_model' => Flag::class,
 ];

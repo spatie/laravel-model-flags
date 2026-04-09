@@ -33,6 +33,25 @@ it('can unflag a model', function (string|BackedEnum $flag) {
     expect($this->model->hasFlag('flag-b'))->toBeTrue();
 })->with('flags');
 
+it('can unflag array of flags on a model', function (array $flags) {
+    foreach ($flags as $flag) {
+        $this->model->flag($flag);
+    }
+
+    $this->model->flag('flag-custom');
+
+    foreach ($flags as $flag) {
+        expect($this->model->hasFlag($flag))->toBeTrue();
+    }
+
+    $this->model->unflag($flags);
+    expect($this->model->hasFlag('flag-custom'))->toBeTrue();
+
+    foreach ($flags as $flag) {
+        expect($this->model->hasFlag($flag))->toBeFalse();
+    }
+})->with('flag array');
+
 it('can get the flags from a model', function () {
     $this->model
         ->flag('flag-a')

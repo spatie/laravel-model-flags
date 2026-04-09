@@ -48,9 +48,18 @@ trait HasFlags
         return $this;
     }
 
-    public function unflag(string|BackedEnum $name): self
+    /**
+     * @param  string|BackedEnum|string[]|BackedEnum[]  $name
+     */
+    public function unflag(string|BackedEnum|array $name): self
     {
-        $this->flags()->where('name', $this->enumValue($name))->delete();
+        if (! is_array($name)) {
+            $name = [$name];
+        }
+
+        $flags = array_map(fn (BackedEnum|string $flag) => $this->enumValue($flag), $name);
+
+        $this->flags()->whereIn('name', $flags)->delete();
 
         return $this;
     }
